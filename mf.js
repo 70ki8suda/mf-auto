@@ -41,7 +41,7 @@ const { IncomingWebhook } = require('@slack/webhook');
       });
       // await setTimeout(Math.floor(Math.random() * 600000))//打刻時間をバラけさせる
 
-      const [login1] = await page.$x('//a[contains(text(), "ログイン")]');
+      const [login1] = await page.$x('//a[contains(text(), "IDでログイン")]');
       await login1.click();
       console.log('ページ遷移');
       await setTimeout(10000);
