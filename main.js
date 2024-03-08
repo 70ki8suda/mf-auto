@@ -1,5 +1,5 @@
 'use strict';
-require('dotenv').config();
+//require('dotenv').config();
 const { google } = require('googleapis');
 const _ = require('lodash');
 const puppeteer = require('puppeteer');
