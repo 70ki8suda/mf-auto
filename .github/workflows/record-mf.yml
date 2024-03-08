@@ -1,0 +1,53 @@
+name: Auto record
+
+on:
+  push:
+    branches: ['main']
+  schedule:
+    - cron: '30 0 * * *' # 日本時間9:30に実行
+    - cron: '0 10 * * *' # 日本時間19:00に実行
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [20.x]
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      # 60days inactiveだとアクションが止まるので、それを防ぐ
+      - uses: entepotenz/keep-github-actions-alive-min-dependencies@v1
+
+      # キャッシュ
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: npm-${{ hashFiles('package-lock.json') }}
+          restore-keys: npm-
+
+      # インストール
+      - name: npm install command
+        run: npm install
+
+      # 実際のコマンド
+      - name: main action...
+        run: >
+          node main.js
+        # 環境変数にsecretsを保存
+        env:
+          GOOGLE_OAUTH_CLIENT_ID: ${{ secrets.GOOGLE_OAUTH_CLIENT_ID }}
+          GOOGLE_OAUTH_CLIENT_SECRET: ${{ secrets.GOOGLE_OAUTH_CLIENT_SECRET }}
+          GOOGLE_OAUTH_REFRESH_TOKEN: ${{ secrets.GOOGLE_OAUTH_REFRESH_TOKEN }}
+          CALENDAR_ID: ${{ secrets.CALENDAR_ID }}
+          MF_ID: ${{ secrets.MF_ID }}
+          MF_PASSWORD: ${{ secrets.MF_PASSWORD }}
+          SLACK_HOOK_URL: ${{ secrets.SLACK_HOOK_URL }}
