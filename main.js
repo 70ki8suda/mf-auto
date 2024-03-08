@@ -10,6 +10,7 @@ const { IncomingWebhook } = require('@slack/webhook');
   //スプシ認証
   const authorize = () => {
     const email = process.env.CLIENT_EMAIL;
+    console.log(email);
     const privateKey = _.replace(process.env.PRIVATE_KEY, /\\n/g, '\n');
     const scope = ['https://www.googleapis.com/auth/spreadsheets'];
     const jsonWebToken = new google.auth.JWT(email, null, privateKey, scope, null);
