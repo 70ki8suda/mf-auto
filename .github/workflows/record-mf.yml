@@ -44,10 +44,17 @@ jobs:
           node main.js
         # 環境変数にsecretsを保存
         env:
-          GOOGLE_OAUTH_CLIENT_ID: ${{ secrets.GOOGLE_OAUTH_CLIENT_ID }}
-          GOOGLE_OAUTH_CLIENT_SECRET: ${{ secrets.GOOGLE_OAUTH_CLIENT_SECRET }}
-          GOOGLE_OAUTH_REFRESH_TOKEN: ${{ secrets.GOOGLE_OAUTH_REFRESH_TOKEN }}
+          AUTH_PROVIDER_X509_CERT_URL: ${{ secrets.AUTH_PROVIDER_X509_CERT_URL }}
+          AUTH_URI: ${{ secrets.AUTH_URI }}
           CALENDAR_ID: ${{ secrets.CALENDAR_ID }}
+          CLIENT_EMAIL: ${{ secrets.CLIENT_EMAIL }}
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          CLIENT_X509_CERT_URL: ${{ secrets.CLIENT_X509_CERT_URL }}
           MF_ID: ${{ secrets.MF_ID }}
           MF_PASSWORD: ${{ secrets.MF_PASSWORD }}
+          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+          PROJECT_ID: ${{ secrets.PROJECT_ID }}
+          SHEET_ID: ${{ secrets.SHEET_ID }}
           SLACK_HOOK_URL: ${{ secrets.SLACK_HOOK_URL }}
+          TOKEN_URI: ${{ secrets.TOKEN_URI }}
+          TYPE: ${{ secrets.TYPE }}
