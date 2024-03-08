@@ -8,7 +8,7 @@ const { IncomingWebhook } = require('@slack/webhook');
 
 (async () => {
   //スプシ認証
-  console.log(process.env.CLIENT_EMAIL);
+  console.log('test' + process.env.CLIENT_EMAIL);
   const authorize = () => {
     const email = process.env.CLIENT_EMAIL;
 
