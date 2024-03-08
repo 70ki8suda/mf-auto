@@ -1,8 +1,6 @@
 name: Auto record
 
 on:
-  push:
-    branches: ['main']
   schedule:
     - cron: '30 0 * * *' # 日本時間9:30に実行
     - cron: '0 10 * * *' # 日本時間19:00に実行
