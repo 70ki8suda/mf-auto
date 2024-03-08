@@ -47,7 +47,7 @@ jobs:
           AUTH_PROVIDER_X509_CERT_URL: ${{ secrets.AUTH_PROVIDER_X509_CERT_URL }}
           AUTH_URI: ${{ secrets.AUTH_URI }}
           CALENDAR_ID: ${{ secrets.CALENDAR_ID }}
-          CLIENT_EMAIL: ${{ vars.CLIENT_EMAIL }}
+          CLIENT_EMAIL: ${{ secrets.CLIENT_EMAIL }}
           CLIENT_ID: ${{ secrets.CLIENT_ID }}
           CLIENT_X509_CERT_URL: ${{ secrets.CLIENT_X509_CERT_URL }}
           MF_ID: ${{ secrets.MF_ID }}
