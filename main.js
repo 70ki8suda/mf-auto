@@ -69,10 +69,17 @@ const { IncomingWebhook } = require('@slack/webhook');
       await setTimeout(10000);
       //HEROKU UTC am9時以降 = 日本18時以降（退勤）
       if (new Date().getHours() > 9) {
-        const [button] = await page.$x('//button[contains(text(), "退勤")]');
-        await button.click();
+        await page.waitForXPath('//div[contains(@class, "clock_out")]//button', { timeout: 10000 });
+        const [button] = await page.$x('//div[contains(@class, "clock_out")]//button');
+        if (button) {
+          await button.click();
+          console.log('退勤ボタンをクリックしました');
+        } else {
+          console.log('退勤ボタンが見つかりません');
+        }
       } else {
-        const [button] = await page.$x('//button[contains(text(), "出勤")]');
+        await page.waitForXPath('//div[contains(@class, "clock_in")]//button', { timeout: 10000 });
+        const [button] = await page.$x('//div[contains(@class, "clock_in")]//button');
         if (button) {
           await button.click();
           console.log('出勤ボタンをクリックしました');
