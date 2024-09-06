@@ -73,7 +73,12 @@ const { IncomingWebhook } = require('@slack/webhook');
         await button.click();
       } else {
         const [button] = await page.$x('//button[contains(text(), "出勤")]');
-        await button.click();
+        if (button) {
+          await button.click();
+          console.log('出勤ボタンをクリックしました');
+        } else {
+          console.log('出勤ボタンが見つかりません');
+        }
       }
       console.log(message, '打刻完了');
       await setTimeout(10000);
