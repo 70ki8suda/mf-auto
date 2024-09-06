@@ -7,6 +7,21 @@ const { setTimeout } = require('timers/promises');
 const { IncomingWebhook } = require('@slack/webhook');
 
 (async () => {
+  console.log('Environment Variables:');
+  console.log('AUTH_PROVIDER_X509_CERT_URL:', process.env.AUTH_PROVIDER_X509_CERT_URL);
+  console.log('AUTH_URI:', process.env.AUTH_URI);
+  console.log('CALENDAR_ID:', process.env.CALENDAR_ID);
+  console.log('CLIENT_EMAIL:', process.env.CLIENT_EMAIL);
+  console.log('CLIENT_ID:', process.env.CLIENT_ID);
+  console.log('CLIENT_X509_CERT_URL:', process.env.CLIENT_X509_CERT_URL);
+  console.log('MF_ID:', process.env.MF_ID);
+  console.log('MF_PASSWORD:', process.env.MF_PASSWORD);
+  console.log('PRIVATE_KEY:', process.env.PRIVATE_KEY);
+  console.log('PROJECT_ID:', process.env.PROJECT_ID);
+  console.log('SHEET_ID:', process.env.SHEET_ID);
+  console.log('SLACK_HOOK_URL:', process.env.SLACK_HOOK_URL);
+  console.log('TOKEN_URI:', process.env.TOKEN_URI);
+  console.log('TYPE:', process.env.TYPE);
   //スプシ認証
   console.log('test' + process.env.CLIENT_EMAIL);
   const authorize = () => {
