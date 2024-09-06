@@ -4,7 +4,7 @@ on:
   schedule:
     - cron: '30 0 * * *' # 日本時間9:30に実行
     - cron: '0 10 * * *' # 日本時間19:00に実行
-    workflow_dispatch: # 手動実行を追加
+  workflow_dispatch: # 手動実行を追加
 
 jobs:
   build:
