@@ -72,6 +72,8 @@ const { IncomingWebhook } = require('@slack/webhook');
         const [button] = await page.$x('//button[contains(text(), " 退勤")]');
         await button.click();
       } else {
+        const pageContent = await page.content();
+        console.log(pageContent);
         const [button] = await page.$x('//button[contains(text(), " 出勤")]');
         await button.click();
       }
